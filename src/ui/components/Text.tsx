@@ -1,4 +1,4 @@
-import { Text as RNText, TextProps, StyleSheet, TextStyle } from 'react-native';
+import { Text as RNText, TextProps, TextStyle } from 'react-native';
 import { fonts, palette, typeScale } from '../tokens';
 
 type Variant =
@@ -75,7 +75,7 @@ export function Text({
   return (
     <RNText
       {...rest}
-      style={StyleSheet.flatten([base, extra, style])}
+      style={[base, extra, style] as TextStyle[]}
       allowFontScaling={false}
     >
       {children}

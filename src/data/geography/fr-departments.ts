@@ -119,7 +119,7 @@ const themeBase = {
 
 export const frDepartmentsPack: Pack = {
   theme: themeBase,
-  cards: entries.flatMap((e, i) => [
+  cards: entries.flatMap((e) => [
     {
       id: `geo.fr.dept.${e.num}.name`,
       themeId: themeBase.id,
