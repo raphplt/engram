@@ -1,0 +1,72 @@
+import { Pack } from '../types';
+
+type Entry = { front: string; back: string; hint?: string; note?: string; difficulty: 1 | 2 | 3 | 4 };
+
+const entries: Entry[] = [
+  { front: 'Socrate', back: 'Maïeutique — « Je sais que je ne sais rien »', hint: 'Athènes, -Vᵉ siècle', note: 'N’a rien écrit. Enseignement par le dialogue ; jugé pour impiété, boit la ciguë en -399.', difficulty: 1 },
+  { front: 'Platon', back: 'Théorie des Idées / Formes — allégorie de la caverne', hint: 'Disciple de Socrate, maître d’Aristote', note: 'République, Phédon, Banquet. Fonde l’Académie.', difficulty: 1 },
+  { front: 'Aristote', back: 'Empirisme, logique, éthique du juste milieu', hint: '« Le tout est plus que la somme de ses parties »', note: 'Précepteur d’Alexandre. Organise tout le savoir grec.', difficulty: 1 },
+  { front: 'Diogène de Sinope', back: 'Cynisme — refus des conventions', hint: 'Vécut dans un tonneau', difficulty: 2 },
+  { front: 'Épicure', back: 'Épicurisme — plaisir mesuré, ataraxie', hint: 'Contre la peur de la mort : « Quand elle est là, nous n’y sommes plus »', difficulty: 2 },
+  { front: 'Zénon de Cition', back: 'Stoïcisme — vivre selon la nature et la raison', hint: 'Fonde l’école du Portique', difficulty: 3 },
+  { front: 'Sénèque', back: 'Stoïcisme romain — Lettres à Lucilius', hint: 'Précepteur de Néron, forcé au suicide', difficulty: 2 },
+  { front: 'Épictète', back: 'Dichotomie du contrôle — Manuel (Enchiridion)', hint: 'Esclave affranchi', note: '« Ce ne sont pas les choses qui troublent les hommes mais les jugements qu’ils portent sur elles. »', difficulty: 2 },
+  { front: 'Marc Aurèle', back: 'Pensées pour moi-même — stoïcisme appliqué au pouvoir', hint: 'Empereur romain philosophe', difficulty: 1 },
+  { front: 'Saint Augustin', back: 'Confessions, Cité de Dieu — synthèse christianisme/platonisme', hint: 'IVᵉ-Vᵉ s., Hippone', difficulty: 2 },
+  { front: 'Thomas d’Aquin', back: 'Somme théologique — aristotélisme chrétien', hint: 'XIIIᵉ s.', difficulty: 2 },
+  { front: 'Descartes', back: 'Cogito ergo sum — doute méthodique, dualisme', hint: 'Discours de la méthode, 1637', difficulty: 1 },
+  { front: 'Spinoza', back: 'Panthéisme (Deus sive Natura) — Éthique', hint: 'Excommunié de sa communauté juive', difficulty: 2 },
+  { front: 'Leibniz', back: 'Monades, harmonie préétablie, optimisme métaphysique', hint: '« Meilleur des mondes possibles »', difficulty: 3 },
+  { front: 'Locke', back: 'Empirisme, contrat social, tabula rasa', hint: 'Inspire la Déclaration américaine', difficulty: 2 },
+  { front: 'Hume', back: 'Scepticisme empiriste — problème de l’induction', hint: 'Enquête sur l’entendement humain', difficulty: 2 },
+  { front: 'Rousseau', back: 'Contrat social, bonté naturelle, volonté générale', hint: 'Du contrat social, 1762', difficulty: 1 },
+  { front: 'Voltaire', back: 'Tolérance, combat contre le fanatisme', hint: 'Candide, Traité sur la tolérance', difficulty: 1 },
+  { front: 'Kant', back: 'Impératif catégorique — critique de la raison pure/pratique', hint: '« Agis selon la maxime qui peut en même temps... »', note: 'Critique de la raison pure (1781), Critique de la raison pratique, Fondements de la métaphysique des mœurs.', difficulty: 1 },
+  { front: 'Hegel', back: 'Dialectique (thèse-antithèse-synthèse) — Esprit absolu', hint: 'Phénoménologie de l’Esprit, 1807', difficulty: 2 },
+  { front: 'Schopenhauer', back: 'Le monde comme volonté et représentation — pessimisme', hint: 'Influence Nietzsche, Wagner, Freud', difficulty: 2 },
+  { front: 'Kierkegaard', back: 'Père de l’existentialisme chrétien', hint: 'Angoisse, désespoir, saut de la foi', difficulty: 3 },
+  { front: 'Marx', back: 'Matérialisme historique, lutte des classes', hint: 'Le Capital, Manifeste du parti communiste', difficulty: 1 },
+  { front: 'Nietzsche', back: 'Volonté de puissance, éternel retour, transvaluation des valeurs', hint: '« Dieu est mort » — Ainsi parlait Zarathoustra', difficulty: 1 },
+  { front: 'Bergson', back: 'Durée, élan vital, intuition', hint: 'Nobel de littérature 1927', difficulty: 3 },
+  { front: 'Husserl', back: 'Phénoménologie — « retour aux choses mêmes »', hint: 'Maître de Heidegger', difficulty: 3 },
+  { front: 'Heidegger', back: 'Être et Temps — Dasein, être-au-monde', hint: '1927. Question du sens de l’être.', difficulty: 2 },
+  { front: 'Wittgenstein', back: 'Tractatus puis Investigations philosophiques — limites du langage', hint: '« Ce dont on ne peut parler, il faut le taire »', difficulty: 3 },
+  { front: 'Sartre', back: 'Existentialisme — « l’existence précède l’essence »', hint: 'L’Être et le Néant, 1943', difficulty: 1 },
+  { front: 'Simone de Beauvoir', back: 'Le Deuxième Sexe — « on ne naît pas femme, on le devient »', hint: '1949', difficulty: 1 },
+  { front: 'Camus', back: 'Absurde, révolte — Mythe de Sisyphe, L’Homme révolté', hint: 'Nobel 1957', difficulty: 2 },
+  { front: 'Lévi-Strauss', back: 'Structuralisme, anthropologie — Tristes Tropiques', hint: 'Systèmes symboliques des sociétés', difficulty: 2 },
+  { front: 'Foucault', back: 'Pouvoir/savoir, biopolitique — Surveiller et punir', hint: 'Histoire de la folie', difficulty: 2 },
+  { front: 'Derrida', back: 'Déconstruction — De la grammatologie', hint: 'Post-structuralisme', difficulty: 3 },
+  { front: 'Hannah Arendt', back: 'Condition de l’homme moderne, banalité du mal', hint: 'Eichmann à Jérusalem, 1963', difficulty: 2 },
+  { front: 'John Rawls', back: 'Théorie de la justice — voile d’ignorance', hint: '1971. Justice comme équité.', difficulty: 3 },
+  { front: 'Habermas', back: 'Éthique de la discussion, agir communicationnel', hint: 'École de Francfort, 2ᵉ génération', difficulty: 3 },
+  { front: 'Confucius', back: 'Éthique des relations — humanité (ren), rites (li)', hint: 'Entretiens (Lunyu)', difficulty: 2 },
+  { front: 'Lao Tseu', back: 'Taoïsme — Tao Te King, wu wei (non-agir)', hint: 'Taoïsme philosophique', difficulty: 2 },
+  { front: 'Zhuangzi', back: 'Taoïsme — rêve du papillon, relativité', hint: 'IVᵉ s. av. J.-C.', difficulty: 3 },
+  { front: 'Avicenne (Ibn Sīnā)', back: 'Philosophe et médecin persan — Livre de la guérison', hint: 'XIᵉ siècle', difficulty: 3 },
+  { front: 'Averroès (Ibn Rushd)', back: 'Commentateur d’Aristote, rationalisme', hint: 'Cordoue, XIIᵉ s.', difficulty: 3 },
+];
+
+const baseId = 'phil.philosophers';
+
+export const philosophersPack: Pack = {
+  theme: {
+    id: baseId,
+    title: 'Philosophes et courants',
+    subtitle: `${entries.length} figures majeures`,
+    category: 'philosophy',
+    description: 'Les penseurs principaux : idée centrale, œuvre de référence, époque.',
+    color: '#3A4553',
+    sortOrder: 60,
+  },
+  cards: entries.map((e, i) => ({
+    id: `${baseId}.${String(i).padStart(3, '0')}`,
+    themeId: baseId,
+    front: e.front,
+    back: e.back,
+    hint: e.hint,
+    note: e.note,
+    difficulty: e.difficulty,
+    tags: ['philosophie'],
+  })),
+};
